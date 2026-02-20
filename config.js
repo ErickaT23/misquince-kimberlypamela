@@ -19,6 +19,7 @@ export const eventData = {
     reception: {
       place: "Hotel Barceló",
       address: "Salón El Dorado",
+      address1: "7a Avenida Pista Derecha, 15-45, Zona 9, Guatemala.",
       date: "11 de Abril",
       time: "19:00 hrs",
       mapLink: "https://maps.app.goo.gl/dCeAV1zAL7x2D6cu6"

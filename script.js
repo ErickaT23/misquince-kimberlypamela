@@ -83,6 +83,7 @@ window.addToCalendar = function () {
     // --- Recepción ---
   document.getElementById('reception-place').innerText = eventData.reception.place;
   document.getElementById('reception-address').innerText = eventData.reception.address;
+  document.getElementById('reception-address1').innerText = eventData.reception.address1;
   document.getElementById('reception-date').innerText = eventData.reception.date;
   document.getElementById('reception-time').innerText = eventData.reception.time;
   document.getElementById('reception-map').onclick = () => window.open(eventData.reception.mapLink, '_blank');
