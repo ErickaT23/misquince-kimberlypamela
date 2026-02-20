@@ -1,0 +1,1016 @@
+/* VARIABLES GLOBALES */
+:root {
+    /* Colores base estilo acuarela */
+    --background-color: white;
+    --text-color: #98770a;
+    --accent-color: #e788a8;
+    
+    /* Tipografías */
+    --font-title: "Allura", cursive;
+    --font-subtitle: "Cinzel", serif;
+    --font-body: "Nunito Sans", sans-serif;
+    
+    /* Tamaños de letra */
+    --font-size-title: 3rem;
+    --font-size-title-small: 2.5rem;
+    --font-size-subtitle: 2rem;
+    --font-size-text: 1rem;
+    
+    /* Otros */
+    --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* RESET BÁSICO */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    background: var(--background-color);
+    font-family: var(--font-body);
+    color: var(--text-color);
+    overflow-x: hidden;
+  }
+  
+  /* SECCIONES GENERALES */
+  section {
+    text-align: center;
+  }
+  
+  h1, h2, h3 {
+    font-family: var(--font-title);
+    color: var(--text-color);
+  }
+  
+  h1 {
+    font-size: var(--font-size-title);
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: var(--font-size-subtitle);
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: var(--font-size-text);
+    margin-bottom: 10px;
+  }
+
+  /* SOBRE */
+/* Nuevo sobre estático */
+#envelope {
+  background-image: url(/images/fondos/FI.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* O cover según prefieras */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.envelope-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.envelope-title {
+  font-family: var(--font-title);
+  font-size: 2.3rem;
+  background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  padding: 15px;
+  margin-bottom: -20px;
+}
+.envelope-subtitle {
+  font-family: var(--font-title);
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  padding: 15px;
+}
+#envelopeimage {
+  width: 370px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+#envelopeimage:hover {
+  transform: scale(1.05);
+}
+.envelope-hint {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1rem;
+  color: #555;
+  margin-top: 1rem;
+  background-color: rgba(249, 213, 211, 0.3); /* rosado suave */
+  padding: 8px 14px;
+  border-radius: 20px;
+}
+  /* Ocultar cuando abre */
+  .hidden {
+    display: none !important;
+  }
+  /* HERO (Foto inicial) */
+  #hero {
+    height: 90vh; /* o la altura que estés usando */
+    display: flex;
+    align-items: flex-end; /* lo manda hacia abajo */
+    justify-content: center; /* centrado horizontal */
+  }
+#hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/images/foto-portada.png'); /* Imagen personalizada */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-text-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1;
+}
+
+.hero-text-centered h1 {
+  margin-top: 0;
+  font-size: 2.8rem;
+  background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-family: var(--font-title);
+  padding: 15px;
+  margin-bottom: -20px;
+  margin-top: 80px;
+}
+
+.hero-text-centered h3 {
+  margin-top: 0;
+  font-size: 3.2rem;
+  background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-family: var(--font-title);
+  padding: 5px;
+}
+
+.guest-info {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  margin-bottom: 0;
+  color: white;
+  padding: 2px;
+}
+
+.guest-note {
+  font-size: 0.8rem;
+  font-style: italic;
+  color:white;
+  max-width: 400px;
+  padding: 5px;
+}
+
+  /* SECCIÓN MÚSICA */
+  /* SECCIÓN INTRO (invitación, música, contador y bendición) */
+#intro-section {
+  background-image: url('/images/fondos/F3.png'); /* Cambia la ruta según tu imagen */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  text-align: center;
+  color: var(--text-color);
+  padding: 20px;
+}
+#intro-section p,
+#intro-section .label,
+#intro-section .number {
+  font-size: 1rem;
+  font-family: var(--font-body);
+  font-style: italic;
+}
+#calendar-button button {
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  font-family: var(--font-body);
+  transition: background 0.3s;
+  font-style: italic;
+}
+#calendar-button button:hover {
+  background-color: var(--text-color);
+}
+/* Música dentro de la sección */
+#music-section {
+  background: transparent;
+  padding: 20px 0;
+}
+#parents-blessing {
+  margin-top: 30px;
+}
+  button {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    font-family: var(--font-body);
+    transition: background 0.3s;
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  button:hover {
+    background: var(--text-color);
+  }
+  /* PROGRESO DE MÚSICA */
+  #progress-container {
+    margin-top: 20px;
+  }
+  #progress-bar {
+    width: 80%;
+  }
+  /* Estilo para la barra de progreso (input range) */
+#progress-bar {
+  -webkit-appearance: none;
+  width: 80%;
+  height: 8px;
+  background: #f4c5d8; /* Color pastel base */
+  border-radius: 5px;
+  outline: none;
+  margin: 10px 0;
+}
+/* Riel (fondo) */
+#progress-bar::-webkit-slider-runnable-track {
+  background: var(--beige);
+  height: 8px;
+  border-radius: 5px;
+}
+/* Pulgarcito (el círculo que se mueve) */
+#progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #6b5c53;
+  cursor: pointer;
+  margin-top: -4px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+/* Para Firefox */
+#progress-bar::-moz-range-track {
+  background: var(--beige);
+  height: 8px;
+  border-radius: 5px;
+}
+#progress-bar::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #6b5c53;
+  cursor: pointer;
+}
+  /* SECCIÓN CONTADOR */
+  #marriage-announcement {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 0;
+  }
+  #marriage-announcement h2 {
+    font-family: var(--font-title);
+    font-size: var(--font-size-title);
+    color: var(--text-color);
+    margin-bottom: 10px;
+  }
+  #marriage-announcement p {
+    font-family: var(--font-body);
+    font-size: var(--font-size-text);
+    color: var(--text-color);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  #event-date p{
+    font-family: var(--font-body);
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #b76e79;
+}
+  #countdown {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .unit {
+    padding: 0;
+    border-radius: 100%;
+    width: 110px;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: var(--shadow);
+    background: #db709498;
+    opacity: 0.8; /* Solo opacidad al fondo */
+    color: white;
+  }
+  .number {
+    font-size: 1.5rem;
+  }
+  .label {
+    font-size: 0.9rem;
+  }
+  #parents-blessing h2{
+    font-family: var(--font-title);
+    font-size: 1.6rem;
+    color: var(--text-color);
+    margin-bottom: 15px;
+  }
+  #parents-blessing p{
+    font-family: var(--font-title);
+    font-size: 2.3rem;
+    max-width: 600px;
+    margin-bottom: 30px;
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+
+  }
+  #oracion p{
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-color);
+  }
+  /* INVITADO y PASES */
+  #guest-name-section {
+    background-color: rgb(255, 239, 254);
+    padding: 20px;
+  }
+  #passes-section{
+    background-color: rgb(249, 224, 247);
+    padding: 20px;
+  }
+  #guest-name-section p, #passes-section p {
+    font-size: var(--font-size-text);
+  }
+  /* ITINERARIO */
+  #itinerary-section {
+    background-image: url('/images/fondos/F4.png'); /* Cambia la ruta según tu imagen */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    padding: 20px;
+  }
+  #itinerary-section h2{
+    font-size: var(--font-size-title-small);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  #itinerary-section p{
+    font-size: var(--font-size-text);
+    background:linear-gradient(90deg, #8C6239, /* bronce profundo */ #b8931f, /* dorado clásico */ #cca83e, /* dorado iluminado */ #B87333 /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  #ceremony img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-top: -30px;
+  }
+  #reception img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  #itinerary-section button {
+    margin-top: 10px;
+    font-family: var(--font-body);
+  }
+  /* LLUVIA DE SOBRES */
+  #gift-section {
+    background-image: url('/images/fondos/F3.png'); /* Cambia la ruta según tu imagen */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    padding: 20px;
+  }
+  #gift-section h2 {
+    font-size: var(--font-size-title-small);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  #gift-section p {
+    font-size: var(--font-size-text);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  #gift-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  #gift-section {
+    text-align: center;
+    padding: 30px 20px;
+  }
+  /* PLAYLIST */
+  #playlist-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  #playlist-button{
+    margin-top: 10px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-text);
+  }
+  #playlist-section h2{
+    font-size: var(--font-size-title-small);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  #playlist-section p{
+    font-size: var(--font-size-text);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  /* DRESS CODE */
+  #dresscode-section {
+    background-image: url('/images/fondos/F4.png'); /* Cambia la ruta según tu imagen */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    padding: 20px;
+  }
+  #dresscode-section h2{
+    font-size: var(--font-size-title-small);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  #dresscode-section p{
+    font-size: var(--font-size-text);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  #dresscode-section img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  #dresscode-inspo button{
+    margin-top: 10px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-text);
+  }
+.hidden {
+  display: none !important;
+}
+  /* BUENOS DESEOS */
+  #wishes-section h2{
+    font-size: var(--font-size-title-small);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  #wishes-container{
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  #wishes-section p{
+    font-size: var(--font-size-text);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }  
+  #show-wishes button {
+    margin-top: 20px;
+    font-family: var(--font-body);
+    font-size: var(--font-size-text);
+    margin-bottom: 20px;
+  }
+  #wish-form {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+  
+  #wish-form input,
+  #wish-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-family: var(--font-body, Arial, sans-serif);
+    font-size: 1rem;
+    background-color: #fff;
+    color: #6b5c53;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
+  }
+  
+  #wish-form textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  #wish-form button {
+    padding: 12px 24px;
+    font-size: 1.2rem;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease;
+    font-family: var(--font-body, Arial, sans-serif);
+  }
+  
+  #wish-form button:hover {
+    background-color: var(--text-color);
+  }
+  
+  /* ÁLBUM */
+  #album-section {
+    background-image: url('/images/fondos/F3.png'); /* Cambia la ruta según tu imagen */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    padding: 20px;
+  }
+  #album-section h2{
+    font-size: var(--font-size-title-small);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  #album-section h3{
+    font-size: var(--font-size-subtitle);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  #qr-album {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  #album-section p{
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: var(--font-size-text);
+  }
+  #upload-photos{
+    font-size: 1rem;
+    padding: 12px 24px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    transition: background 0.3s;
+    font-family: var(--font-body);
+    text-decoration: none;
+    margin-top: 20px;
+    font-size: var(--font-size-text);
+  }
+
+  /* CONFIRMACIÓN */
+  #rsvpSection{
+    padding: 20px;
+    margin-top: 50px;
+  }
+  #rsvpSection h2{
+    font-size: var(--font-size-title-small);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  #rsvpSection p{
+    font-size: var(--font-size-text);
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  /* FOTO FINAL */
+  #final-photo-section{
+    padding: 0;
+    margin-bottom: 0;
+  }
+  #final-photo {
+    width: 100%;
+    height: auto;
+  }
+  
+  /* FRASE FINAL */
+  #final-message-section {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    padding: 10px;
+    font-family: "Allura", cursive;
+  }
+#final-message-section p{
+  font-size: 2.3rem;
+  background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  padding: 15px;
+}
+  /* FOOTER */
+  #social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5rem;
+  }
+
+  #footer {
+    background-color:#DB7093;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  #social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  #social-icons a {
+    color: white;
+    font-size: 2.5rem;
+    transition: color 0.3s;
+  }
+  
+  #social-icons a:hover {
+    color: white;
+  }
+  
+  .footer-logo img {
+    width: 100px;
+    height: auto;
+  }
+  
+  
+  /* ANIMACIONES SCROLL */
+  section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2.2rem;
+    }
+    
+    h2 {
+      font-size: 1.5rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+    
+    #gallery-container img {
+      width: 150px;
+      height: 150px;
+    }
+    
+    .unit {
+      width: 75px;
+      height: 75px;
+    }
+  }
+
+.hidden {
+  display: none !important;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Capa para que las notas SIEMPRE estén encima */
+#notes-layer{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483647; /* el más alto */
+}
+
+.music-note{
+  position: absolute;
+  font-size: 10px;
+  color: rgba(183,110,121,.55); /* rose gold */
+  animation: noteFall 2.6s linear forwards;
+  filter: drop-shadow(0 0 2px rgba(247,198,199,.25));
+}
+
+@keyframes noteFall{
+  0%   { transform: translateY(-10px) scale(.9); opacity: 0; }
+  15%  { opacity: .8; }
+  100% { transform: translateY(140px) scale(1.05); opacity: 0; }
+}
+#notes-layer{
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2147483647;
+}
+
+.music-note{
+  position: absolute;
+  font-size: 10px;
+  color: rgba(183,110,121,.55); /* rose gold */
+  animation: noteFall 2.6s linear forwards;
+  filter: drop-shadow(0 0 2px rgba(247,198,199,.25));
+}
+
+@keyframes noteFall{
+  0%   { transform: translateY(-10px) scale(.9); opacity: 0; }
+  15%  { opacity: .8; }
+  100% { transform: translateY(140px) scale(1.05); opacity: 0; }
+}
+
+
+/* ================= RSVP BASE ================= */
+.rsvp-backdrop {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.55);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+
+.rsvp-backdrop.show {
+  opacity: 1;
+}
+
+.rsvp-modal {
+  background:#fad5e1;
+  color:var(--text-color);
+  padding: 30px;
+  border-radius: 18px;
+  width: min(520px, 95vw);
+  position: relative;
+  transform: translateY(12px) scale(.96);
+  opacity: 0;
+  transition: transform .25s ease, opacity .25s ease;
+}
+
+.rsvp-backdrop.show .rsvp-modal {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+.rsvp-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.rsvp-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.rsvp-btn {
+  flex: 1;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.2);
+  background: rgba(255,255,255,.08);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+
+.rsvp-yes { background-color: #b7456b; border-color: #e788a8;}
+.rsvp-no  { background-color: #e788a8; border-color: #b7456b; }
+
+.rsvp-msg {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 14px;
+  background: rgba(255,255,255,.1);
+}
+
+.rsvp-msg.ok {
+  border: none;
+}
+
+.rsvp-msg.err {
+  border: none;
+}
+#rsvpNombre, #rsvpPases {
+  font-size: 2.2rem;
+  background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-family: var(--font-title);
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.rsvp-modal label{
+  font-size: 1.1rem;
+}
+.rsvp-modal label{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#msgRsvp {
+  font-size: 1.3rem;
+  color: #b7456b;
+  font-family: var(--font-title);
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dresscode-inspo-title{
+  margin-top: 18px;
+  margin-bottom: 6px;
+  font-size: var(--font-size-title-small);
+  background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.dresscode-inspo-sub{
+  margin-top: 0;
+  margin-bottom: 14px;
+  opacity: .9;
+  font-size: 0.95rem;
+}
+
+.dresscode-gallery{
+  width: min(520px, 92%);
+  margin: 0 auto;
+  display: grid;
+  gap: 10px;
+
+  /* Collage 7 fotos */
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "i1 i2 i3"
+    "i4 i4 i5"
+    "i6 i7 i5";
+}
+
+.dc-img{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.10);
+  border: 1px solid rgba(255,255,255,.35);
+  background: rgba(255,255,255,.12);
+}
+
+/* Áreas */
+.dc-1{ grid-area: i1; aspect-ratio: 1/1; }
+.dc-2{ grid-area: i2; aspect-ratio: 1/1; }
+.dc-3{ grid-area: i3; aspect-ratio: 1/1; }
+.dc-4{ grid-area: i4; aspect-ratio: 2/1; }
+.dc-5{ grid-area: i5; aspect-ratio: 1/2; }
+.dc-6{ grid-area: i6; aspect-ratio: 1/1; }
+.dc-7{ grid-area: i7; aspect-ratio: 1/1; }
+
+/* Responsive: en pantallas muy pequeñas lo hacemos 2 columnas */
+@media (max-width: 420px){
+  .dresscode-gallery{
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "i1 i2"
+      "i3 i4"
+      "i5 i5"
+      "i6 i7";
+  }
+
+  .dc-5{ aspect-ratio: 2/1; }
+  .dc-4{ aspect-ratio: 1/1; }
+}

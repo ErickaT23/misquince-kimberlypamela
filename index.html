@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mis Quince Kimberly Pamela</title>
+  <meta property="og:title" content="Mis Quince Kimberly Pamela Vásquez Piedrasanta">
+  <meta property="og:description" content="Los esperamos para celebrar juntos">
+  <meta property="og:image" content="">
+  <link rel="stylesheet" href="style.css">
+  <!-- Firebase primero -->
+  <script type="module" src="config.js" defer></script>
+  <script type="module" src="loads.js" defer></script>
+  <script type="module" src="database.js" defer></script> <!-- ✅ PRIMERO database -->
+  <script type="module" src="script.js" defer></script>   <!-- ✅ LUEGO script -->
+  <script type="module" src="rsvp.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cinzel:wght@400..900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+</head>
+<body>
+
+    <!-- SOBRE -->
+    <section id="envelope">
+      <div class="envelope-content">
+        <h2 class="envelope-title">Mis Quince</h2>
+        <h3 class="envelope-subtitle">Kimberly Pamela</h3>
+        <img src="/images/sobre-inicial.svg" alt="Sobre de invitación" id="envelopeimage">
+        <p class="envelope-hint">Haz click en el sobre para abrir la invitación</p>
+      </div>
+    </section>
+    
+  
+    <div class="main-content hidden">
+    <!-- Foto inicial -->
+    <section id="hero">
+      <div class="hero-text-centered">
+        <h1 id="couple-names"></h1>
+        <h3 id="couple-last"></h3>
+    
+        <p id="guest-name" class="guest-info"></p>
+        <p class="guest-info">Valida para <span id="passes"></span></p>
+    
+        <p class="guest-note">
+          Para comodidad de todos nuestros invitados, por favor respetar los nombres y la cantidad de personas asignadas en este pase.
+        </p>
+      </div>
+    </section>
+    
+
+    <!-- Sección de música -->
+<!-- Sección combinada: Invitación + Cuenta regresiva + Música + Bendición -->
+<section id="intro-section" class="fade-in-element">
+  <div id="marriage-announcement">
+    <h2>¡Solo Faltan!</h2>
+    <!--p>Nos encanta que sean parte de este momento tan especial para nosotros.</!--p>-->
+  </div>
+
+  <div id="countdown">
+    <div class="unit">
+      <span id="days" class="number">00</span>
+      <span class="label">Días</span>
+    </div>
+    <div class="unit">
+      <span id="hours" class="number">00</span>
+      <span class="label">Horas</span>
+    </div>
+    <div class="unit">
+      <span id="minutes" class="number">00</span>
+      <span class="label">Minutos</span>
+    </div>
+    <div class="unit">
+      <span id="seconds" class="number">00</span>
+      <span class="label">Segundos</span>
+    </div>
+  </div>
+
+  <div id="event-date">
+    <p>11 . 04 . 2026</p>
+  </div>
+
+  <div id="calendar-button">
+    <button onclick="addToCalendar()">Agregar al calendario</button>
+  </div>
+
+  <div id="music-section">
+    <h2 id="song-title"></h2>
+    <button id="playPauseButton">Play</button>
+    <audio id="audioPlayer" loop preload="auto"></audio>
+    <div id="progress-container">
+      <input id="progress-bar" type="range" value="0" min="0" max="100">
+      <div class="time-display">
+        <span id="current-time">0:00</span> / <span id="duration-time">0:00</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="parents-blessing">
+    <h2>Con la bendición de Dios y de mis padres</h2>
+    <p>Roxana Piedrasanta & Angel Vásquez </p>
+  </div>
+</section>
+
+    <!-- Itinerario Ceremonia y Recepción -->
+    <section id="itinerary-section">
+
+      <div class="oracion">
+        <p>Amado Padre, te agradezco estos 15 años de vida. Hoy, al dejar atrás la niñez, te pido que guíes mis pasos. Ayúdame a escuchar tu Palabra como María, guardándola en mi corazón. Que tu amor me acompañe siempre y me enseñes a ser una buena cristiana, fiel a tu Iglesia y servicial con los demás. Amén".</p>
+        <p>Te invito a unirte a mí celebración especial.</p>
+      </div>
+
+      <div id="ceremony">
+        <lord-icon src="https://cdn.lordicon.com/jqmftaai.json" trigger="loop" delay="2000" stroke="light" colors="primary:#DB7093,secondary:#C71585" style="width:200px;height:200px;padding:10px;margin-top:10px">
+        </lord-icon>
+        <h2>Ceremonia</h2>
+        <p id="ceremony-place"></p>
+        <p id="ceremony-address"></p>
+        <p><span id="ceremony-date"></span> | <span id="ceremony-time"></span></p>
+        <button id="ceremony-map">Cómo llegar</button>
+      </div>
+        <lord-icon src="https://cdn.lordicon.com/nsgykrsg.json" trigger="loop" delay="2000" stroke="light" colors="primary:#DB7093,secondary:#C71585" style="width:200px;height:200px;padding:10px;margin-top:10px">
+        </lord-icon>
+        <h2>Recepción</h2>
+        <p id="reception-place"></p>
+        <p id="reception-address"></p>
+        <p><span id="reception-date"></span> | <span id="reception-time"></span></p>
+        <button id="reception-map">Cómo llegar</button>
+      </div>
+    </section>
+
+    <!-- Lluvia de sobres -->
+    <section id="gift-section">
+      <lord-icon class="icon-gift" src="https://cdn.lordicon.com/kezeezyg.json" trigger="loop" delay="2000" stroke="light" colors="primary:#DB7093,secondary:#C71585" style="width:200px;height:200px;padding:10px;margin-top:10px">
+      </lord-icon>
+      <h2>Lluvia de Sobres</h2>
+      <p id="abroad-gift-message"></p>
+<!--<button id="show-account">Ver cuenta</button>-->
+
+<!-- Pop-up oculto -->
+<!--<div id="account-popup" class="hidden">
+  <div class="popup-content">
+    <p><strong>Cuenta No.</strong>01234567890</p>
+    <p><strong>Banco del Universo</strong></p>
+    <p>Monetaria</p>
+    <p>Greta Carranza</p>
+    <hr>
+    <p style="margin-top: 1rem;">O bien, tendremos un cofre de sobres en la recepción.</p>
+    <button id="close-popup">Cerrar</button>
+  </div>
+</div>-->
+
+              <!-- Playlist -->
+        <section id="playlist-section">
+          <lord-icon src="https://cdn.lordicon.com/vvlnxtgv.json" trigger="loop" delay="2000" stroke="light" colors="primary:#DB7093,secondary:#C71585" style="width:200px;height:200px;padding:10px;margin-top:10px">
+          </lord-icon>
+          <h2>Playlist</h2>
+          <p id="playlist-description"></p>
+          <button id="playlist-button">Abrir Playlist</button>
+        </section>
+    </section>
+
+    <!-- Dress code -->
+    <section id="dresscode-section">
+      <lord-icon src="https://cdn.lordicon.com/okgbpdra.json" trigger="loop" delay="2000" stroke="light" colors="primary:#DB7093,secondary:#C71585" style="width:200px;height:200px;padding:10px;margin-top:10px">
+      </lord-icon>
+         <h2>Dress Code</h2>
+
+      <div id="dresscode-details">
+          <p>Traje formal, reservamos los colores rosado y dorado quedan totalmente reservados para la quinceñera.</p>
+      </div>
+
+      <h3 class="dresscode-inspo-title">Inspiración</h3>
+      <p class="dresscode-inspo-sub">Algunas ideas para guiar sus looks.</p>
+    
+      <div class="dresscode-gallery" aria-label="Inspiración de vestimenta">
+        <img src="/images/Inspo/inspo1.jpg" alt="Inspiración 1" class="dc-img dc-1" loading="lazy">
+        <img src="/images/Inspo/inspo2.jpg" alt="Inspiración 2" class="dc-img dc-2" loading="lazy">
+        <img src="/images/Inspo/inspo3.jpg" alt="Inspiración 3" class="dc-img dc-3" loading="lazy">
+        <img src="/images/Inspo/inspo4.jpg" alt="Inspiración 4" class="dc-img dc-4" loading="lazy">
+        <img src="/images/Inspo/inspo5.jpg" alt="Inspiración 5" class="dc-img dc-5" loading="lazy">
+        <img src="/images/Inspo/inspo6.jpg" alt="Inspiración 6" class="dc-img dc-6" loading="lazy">
+        <img src="/images/Inspo/inspo7.jpg" alt="Inspiración 7" class="dc-img dc-7" loading="lazy">
+      </div>
+
+            <!-- Buenos deseos -->
+          <section id="wishes-section">
+            <lord-icon src="https://cdn.lordicon.com/vgyuhnxn.json" trigger="loop" delay="2000" stroke="light" colors="primary:#DB7093,secondary:#C71585" style="width:200px;height:200px;padding:10px;margin-top:10px">
+            </lord-icon>
+            <h2>Buenos Deseos</h2>
+            <button id="show-wishes">Ver Buenos Deseos</button>
+            <div id="wishes-container" class="hidden"></div>
+            <button id="send-wish">Enviar Buenos Deseos</button>
+            <div id="wish-form" class="hidden">
+              <input id="wish-name" type="text" placeholder="Tu nombre">
+              <textarea id="wish-message" placeholder="Tu mensaje"></textarea>
+              <button id="submit-wish">Enviar</button>
+            </div>
+          </section>
+    </section>
+
+
+
+    <!-- Álbum -->
+    <section id="album-section">
+      <lord-icon src="https://cdn.lordicon.com/wsaaegar.json" trigger="loop" delay="2000" stroke="light" colors="primary:#DB7093,secondary:#C71585" style="width:200px;height:200px;padding:10px;margin-top:10px">
+      </lord-icon>
+      <h2>¡Hagamos recuerdos!</h2>
+      <h3 id="event-hashtag"></h3>
+      <img id="qr-album" alt="Código QR para álbum">
+      <p id="upload-description"></p>
+      <a id="upload-photos" target="_blank">Subir Fotos</a>
+                <!-- ================= RSVP SECTION ================= -->
+          <section id="rsvpSection">
+            <h3>Confirmar Asistencia</h3>
+
+            <lord-icon
+              src="https://cdn.lordicon.com/unkasvor.json"
+              trigger="loop"
+              delay="2000"
+              stroke="light"
+              colors="primary:#DB7093,secondary:#C71585"
+              style="width:200px;height:200px">
+            </lord-icon>
+
+            <p>
+              Para nosotros es muy importante que confirmes tu asistencia lo antes posible,
+              o bien indicarnos si no podrás acompañarnos.
+            </p>
+
+            <button id="btnConfirmarRsvp" type="button">
+              Confirmar
+            </button>
+
+            <div id="msgRsvp" class="rsvp-msg" style="display:none"></div>
+          </section>
+
+          <!-- ================= RSVP MODAL ================= -->
+          <div id="rsvpBackdrop" class="rsvp-backdrop" aria-hidden="true" style="display:none">
+            <div class="rsvp-modal" role="dialog" aria-modal="true">
+              <button class="rsvp-close" id="btnRsvpClose" type="button">×</button>
+
+              <h3>Confirmación de asistencia</h3>
+              <p class="rsvp-sub">Por favor selecciona una opción</p>
+
+              <label>Nombre</label>
+              <input id="rsvpNombre" type="text" readonly>
+
+              <label>Cantidad de pases</label>
+              <input id="rsvpPases" type="text" readonly>
+
+              <div class="rsvp-actions">
+                <button id="btnRsvpSi" class="rsvp-btn rsvp-yes">Sí, asistiré</button>
+                <button id="btnRsvpNo" class="rsvp-btn rsvp-no">No, asistiré</button>
+              </div>
+
+              <div id="rsvpMsgModal" class="rsvp-msg" style="display:none"></div>
+            </div>
+          </div>
+
+                  <!-- Frase final -->
+        <section id="final-message-section">
+          <p id="final-message"></p>
+        </section>
+
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div id="social-icons"></div>
+      <div class="footer-logo">
+        <img id="footer-logo" alt="Logo de la empresa">
+      </div>
+    </footer>    
+
+  </div>
+       
+</body>
+</html>
+
+
