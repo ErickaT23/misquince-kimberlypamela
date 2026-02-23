@@ -177,26 +177,30 @@
   padding: 5px;
 }
 
-.guest-info {
+#invitado p {
   font-family: var(--font-title);
   font-size: 1.8rem;
   margin-bottom: 0;
   color: white;
   padding: 2px;
 }
+#guest-name .guest-info{
+  background-color: beige;
+}
 
 .guest-note {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-style: italic;
   color:white;
   max-width: 400px;
-  padding: 5px;
+  padding: 2px;
+  font-family: var(--font-body);
 }
 
   /* SECCIÓN MÚSICA */
   /* SECCIÓN INTRO (invitación, música, contador y bendición) */
 #intro-section {
-  background-image: url('/images/fondos/F3.png'); /* Cambia la ruta según tu imagen */
+  background-image: url('/images/fondos/F1.png'); /* Cambia la ruta según tu imagen */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -233,7 +237,7 @@
   padding: 20px 0;
 }
 #parents-blessing {
-  margin-top: 30px;
+  margin-top: 20px;
 }
   button {
     padding: 12px 24px;
@@ -264,7 +268,7 @@
   -webkit-appearance: none;
   width: 80%;
   height: 8px;
-  background: #f4c5d8; /* Color pastel base */
+  background: #f4c5d878; /* Color pastel base */
   border-radius: 5px;
   outline: none;
   margin: 10px 0;
@@ -355,15 +359,15 @@
   }
   #parents-blessing h2{
     font-family: var(--font-title);
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     color: var(--text-color);
     margin-bottom: 15px;
+    padding: 15px;
   }
   #parents-blessing p{
     font-family: var(--font-title);
-    font-size: 2.3rem;
+    font-size: 2.5rem;
     max-width: 600px;
-    margin-bottom: 30px;
     background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -377,20 +381,10 @@
     color: var(--text-color);
   }
   /* INVITADO y PASES */
-  #guest-name-section {
-    background-color: rgb(255, 239, 254);
-    padding: 20px;
-  }
-  #passes-section{
-    background-color: rgb(249, 224, 247);
-    padding: 20px;
-  }
-  #guest-name-section p, #passes-section p {
-    font-size: var(--font-size-text);
-  }
+
   /* ITINERARIO */
   #itinerary-section {
-    background-image: url('/images/fondos/F4.png'); /* Cambia la ruta según tu imagen */
+    background-image: url('/images/fondos/F6.png'); /* Cambia la ruta según tu imagen */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -405,6 +399,24 @@
     background-clip: text;
     text-fill-color: transparent;
   }
+  #itinerary-section h3{
+    font-size: 2rem;
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+  #itinerary-section h4{
+    font-size: 2.5rem;
+    background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    font-family: var(--font-title);
+    margin-top: 50px;
+  }
   #itinerary-section p{
     font-size: var(--font-size-text);
     background:linear-gradient(90deg, #8C6239, /* bronce profundo */ #b8931f, /* dorado clásico */ #cca83e, /* dorado iluminado */ #B87333 /* bronce */);
@@ -413,24 +425,19 @@
     background-clip: text;
     text-fill-color: transparent;
   }
-  #ceremony img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-top: -30px;
-  }
-  #reception img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
   #itinerary-section button {
     margin-top: 10px;
     font-family: var(--font-body);
   }
+  #ceremony{
+    margin-bottom: 20px;
+  }
+  #reception{
+    margin-bottom: 20px;
+  }
   /* LLUVIA DE SOBRES */
   #gift-section {
-    background-image: url('/images/fondos/F3.png'); /* Cambia la ruta según tu imagen */
+    background-image: url('/images/fondos/F2.png'); /* Cambia la ruta según tu imagen */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -491,7 +498,7 @@
   }
   /* DRESS CODE */
   #dresscode-section {
-    background-image: url('/images/fondos/F4.png'); /* Cambia la ruta según tu imagen */
+    background-image: url('/images/fondos/F3.png'); /* Cambia la ruta según tu imagen */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -780,8 +787,8 @@
     }
     
     .unit {
-      width: 75px;
-      height: 75px;
+      width: 80px;
+      height: 80px;
     }
   }
 

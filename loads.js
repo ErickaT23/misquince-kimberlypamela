@@ -22,11 +22,11 @@ const guests = [
   
     if (guest) {
       const invitationText = guest.passes > 1
-        ? `¡${guest.name}, están invitados!`
-        : `¡${guest.name}, estás invitado!`;
+        ? `¡${guest.name}!`
+        : `¡${guest.name}!`;
   
       document.getElementById('guest-name').textContent = invitationText;
-      document.getElementById('passes').textContent = `${guest.passes} ${guest.passes === 1 ? 'persona' : 'personas'}`;
+      document.getElementById('passes').textContent = `${guest.passes} ${guest.passes === 1 ? 'lugar reservado' : 'lugares reservados'}`;
     } else {
       document.getElementById('guest-name').textContent = `¡Invitado no encontrado!`;
       const invitationInfo = document.querySelector('.invitation-info-section');

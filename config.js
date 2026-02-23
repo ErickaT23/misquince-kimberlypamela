@@ -1,7 +1,7 @@
 export const eventData = {
     couple: {
       names: "Mis Quince",
-      last:"Kimberly Pamela Vásquez Piedrasanta",
+      last:"Kimberly Pamela",
       date: "11 . 04 . 2026",
       heroImage: "/images/foto-portada.png"
     },
@@ -11,7 +11,7 @@ export const eventData = {
     },
     ceremony: {
       place: "Parroquia Nuestra Señora de Fátima",
-      address: "1 Avenida, Ciudad Nueva, 983, Zona 2, Guatemala",
+      address: "11 avenida 9-83 Ciudad Nueva zona 2, Ciuda de Guatemala.",
       date: "11 de Abril",
       time: "17:00 hrs",
       mapLink: "https://maps.app.goo.gl/jYZjGrEYo4fD2tZw6"
@@ -19,17 +19,17 @@ export const eventData = {
     reception: {
       place: "Hotel Barceló",
       address: "Salón El Dorado",
-      address1: "7a Avenida Pista Derecha, 15-45, Zona 9, Guatemala.",
+      address1: "7 avenida 15-45 zona 9, Ciudad de Guatemala.",
       date: "11 de Abril",
       time: "19:00 hrs",
       mapLink: "https://maps.app.goo.gl/dCeAV1zAL7x2D6cu6"
     },
-    abroadGiftMessage: "Tu presencia es nuestro mejor regalo, pero si deseas darme un obsequio agradeceré que sea en efectivo. ¡Muchas gracias!",
+    abroadGiftMessage: "Lo que más queremos es compartir contigo nuestro gran día, pero agradecemos mucho el gesto de un obsequio. Tendremos un cofre en la entrada para que puedas dejar tu sobre con efectivo. ¡Gracias!",
     
     playlistDescription: "Nos encantaría que nos sugieras esas canciones que sabes que son geniales y no pueden en mi fiesta.",
     playlistLink: "https://www.youtube.com/playlist?list=PL1BxR7BEmielIlOvWLCRjc5WE3M0hrMos&jct=SOVC-D7U-VKZiJWplh4QGw",
     dresscode: {
-      description: "Traje formal, reservamos los colores rosado y dorado quedan totalmente reservados para la quinceñera.",
+      description: "Traje formal y elegante, los colores rosado y dorado quedan reservados para la quinceañera.",
       image: "/images/dresscode.svg",
     },  
     album: {
