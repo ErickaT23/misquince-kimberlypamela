@@ -135,7 +135,7 @@
     justify-content: center; /* centrado horizontal */
   }
 #hero {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('/images/foto-portada.png'); /* Imagen personalizada */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),url('/images/V2.jpeg'); /* Imagen personalizada */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -623,7 +623,6 @@
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;
-    padding: 20px;
   }
   #album-section h2{
     font-size: var(--font-size-title-small);
@@ -1028,7 +1027,6 @@
     font-family: var(--font-body);
     transition: background 0.3s;
     font-style: italic;
-    margin-bottom: 20px;
 }
 
 .dresscode-links a{
@@ -1038,4 +1036,87 @@
 
 .dresscode-pinterest-btn:hover{
   background-color: var(--text-color);
+}
+.separador-full {
+  height: 400px;
+  background-image: url("images/H1.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.separador-xv {
+  text-align: center;
+}
+
+.separador-xv img {
+  width: 100%;
+}
+.lightbox-xv{
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgb(10 10 12 / 52%);
+  padding: 20px;
+  overflow: auto;              /* ✅ permite scroll dentro del lightbox */
+  -webkit-overflow-scrolling: touch;
+  align-content: center;
+  align-items: center;
+}
+
+.lightbox-xv-img{
+  display: block;
+  height: auto;
+  border-radius: 16px;
+}
+
+.lightbox-xv-close{
+  position: fixed;             /* ✅ siempre visible aunque hagas scroll */
+  top: 14px;
+  right: 18px;
+  border: none;
+  border-radius: 12px;
+  font-size: 30px;
+  cursor: pointer;
+  background: rgba(255,255,255,.18);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  z-index: 10000;
+}
+.galeria-xv-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 14px;
+  padding: 0 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.galeria-xv-img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 18px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.galeria-xv-img:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.15);
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+  .galeria-xv-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .galeria-xv-img {
+    height: 220px;
+  }
+}
+#galeria{
+  margin-top: 50px;
 }

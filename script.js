@@ -277,3 +277,36 @@ document.getElementById('footer-logo').src = eventData.footer.logo;
   }, 1000);
 
 });
+
+//galeria
+document.addEventListener("DOMContentLoaded", () => {
+  const imgs = document.querySelectorAll(".galeria-xv-img");
+  const lightbox = document.getElementById("lightbox-xv");
+  const lightboxImg = document.getElementById("lightbox-xv-img");
+  const closeBtn = document.getElementById("lightbox-xv-close");
+
+  if (!lightbox || !lightboxImg || !closeBtn) return;
+
+  imgs.forEach(img => {
+    img.addEventListener("click", () => {
+      lightboxImg.src = img.src;
+      lightbox.style.display = "block";
+    });
+  });
+
+  function closeLightbox(){
+    lightbox.style.display = "none";
+    lightboxImg.src = "";
+    document.body.style.overflow = "";          // ✅ devuelve el scroll
+  }
+
+  closeBtn.addEventListener("click", closeLightbox);
+
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && lightbox.style.display === "block") closeLightbox();
+  });
+});
