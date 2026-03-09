@@ -2,7 +2,7 @@ const guests = [
   { id: "1", name: "Kevin López y Jessica Juracán", adults: 2, teens: 0, tableAdults: "4", tableTeens: "" },
   { id: "2", name: "Sr. Walfred López y familia pte.", adults: 3, teens: 0, tableAdults: "4", tableTeens: "" },
   { id: "3", name: "Sr.Eddy López y familia pte.", adults: 3, teens: 3, tableAdults: "7", tableTeens: "1" },
-  { id: "4", name: "Sr y Sra. López Piedrasanta", adults: 2, teens: 0, tableAdults: "", tableTeens: "" },
+  { id: "4", name: "Sr y Sra. López Piedrasanta", adults: 2, teens: 0, tableAdults: "7", tableTeens: "" },
   { id: "5", name: "Antonio Piedrasanta", adults: 1, teens: 0, tableAdults: "3", tableTeens: "" },
   { id: "6", name: "Johanna Arcia y Julio Mancilla Arcia", adults: 1, teens: 1, tableAdults: "4", tableTeens: "8" },
   { id: "7", name: "Thelma Piedrasanta", adults: 1, teens: 0, tableAdults: "3", tableTeens: "" },
