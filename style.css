@@ -817,7 +817,7 @@
 }
 
 .rsvp-modal {
-  background:#fad5e1;
+  background:#fff6f9;
   color:var(--text-color);
   padding: 30px;
   border-radius: 18px;
@@ -839,7 +839,7 @@
   right: 12px;
   background: transparent;
   border: none;
-  color: #fff;
+  color: #b7456b;
   font-size: 25px;
   cursor: pointer;
   padding: 5px;
@@ -880,8 +880,8 @@
 .rsvp-msg.err {
   border: none;
 }
-#rsvpNombre, #rsvpPases {
-  font-size: 2.2rem;
+#rsvpNombre, #rsvpPases, #rsvpMesaAdultos, #rsvpMesaAdolescentes{
+  font-size: 2rem;
   background: linear-gradient(90deg,#8C6239,   /* bronce profundo */#C9A227,   /* dorado clásico */#E6C35C,   /* dorado iluminado */#B87333    /* bronce */);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
