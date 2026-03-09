@@ -892,6 +892,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 .rsvp-modal label{
   font-size: 1.1rem;
