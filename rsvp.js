@@ -207,19 +207,26 @@ document.addEventListener("DOMContentLoaded", () => {
     inputPases.value = formatGuestPasses(invitado.adults || 0, invitado.teens || 0);
     inputMesaAdultos.value = invitado.tableAdults || "No asignada";
     inputMesaAdolescentes.value = invitado.tableTeens || "No asignada";
-
+  
+    // Estado inicial visual
     if (isConfirmed(invitado.id)) {
       markConfirmedUI();
     } else {
       resetConfirmUI();
     }
-
+  
+    // Verificación real contra backend
     (async () => {
       try {
         const ya = await apiCheck(invitado.id);
+  
         if (ya) {
           setConfirmed(invitado.id, "YA");
           markConfirmedUI();
+        } else {
+          // Si en Sheets ya no existe, reinicia el estado local
+          clearConfirmed(invitado.id);
+          resetConfirmUI();
         }
       } catch (e) {
         console.warn("apiCheck inicial falló:", e);
@@ -234,29 +241,36 @@ document.addEventListener("DOMContentLoaded", () => {
   btnOpen.addEventListener("click", async () => {
     openRsvpModal();
     hideMsg(msgModal);
-
+  
     if (!invitado) {
       showMsg(msgModal, "No se encontró invitado en la URL. Usa ?id=1", "error");
       return;
     }
-
-    if (isConfirmed(invitado.id)) {
-      showMsg(msgModal, "Gracias, ya has enviado tu confirmación.", "ok");
-      markConfirmedUI();
-      setTimeout(closeRsvpModal, 900);
-      return;
-    }
-
+  
     try {
       const ya = await apiCheck(invitado.id);
+  
       if (ya) {
         setConfirmed(invitado.id, "YA");
         showMsg(msgModal, "Gracias, ya has enviado tu confirmación.", "ok");
         markConfirmedUI();
         setTimeout(closeRsvpModal, 900);
+        return;
       }
+  
+      // Si ya no existe en backend, limpiar estado local para permitir confirmar otra vez
+      clearConfirmed(invitado.id);
+      resetConfirmUI();
+  
     } catch (e) {
       console.error("❌ apiCheck:", e);
+  
+      // Si falla el backend, usamos respaldo local
+      if (isConfirmed(invitado.id)) {
+        showMsg(msgModal, "Gracias, ya has enviado tu confirmación.", "ok");
+        markConfirmedUI();
+        setTimeout(closeRsvpModal, 900);
+      }
     }
   });
 
@@ -267,11 +281,27 @@ document.addEventListener("DOMContentLoaded", () => {
   async function confirmar(respuesta) {
     if (!invitado) return;
 
-    if (isConfirmed(invitado.id)) {
-      showMsg(msgModal, "Gracias, ya has enviado tu confirmación.", "ok");
-      markConfirmedUI();
-      setTimeout(closeRsvpModal, 900);
-      return;
+    try {
+      const yaBackend = await apiCheck(invitado.id);
+    
+      if (yaBackend) {
+        setConfirmed(invitado.id, "YA");
+        showMsg(msgModal, "Gracias, ya has enviado tu confirmación.", "ok");
+        markConfirmedUI();
+        setTimeout(closeRsvpModal, 900);
+        return;
+      } else {
+        clearConfirmed(invitado.id);
+      }
+    } catch (e) {
+      console.warn("No se pudo verificar backend antes de confirmar:", e);
+    
+      if (isConfirmed(invitado.id)) {
+        showMsg(msgModal, "Gracias, ya has enviado tu confirmación.", "ok");
+        markConfirmedUI();
+        setTimeout(closeRsvpModal, 900);
+        return;
+      }
     }
 
     const msgSi = getMesaMessage(invitado.adults || 0,invitado.teens || 0,invitado.tableAdults || "",invitado.tableTeens || "");
@@ -312,3 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
   btnSi.addEventListener("click", () => confirmar("SI"));
   btnNo.addEventListener("click", () => confirmar("NO"));
 });
+
+function clearConfirmed(id) {
+  localStorage.removeItem(storageKey(id));
+}
