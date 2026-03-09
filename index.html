@@ -229,52 +229,59 @@
       <p id="upload-description"></p>
       <a id="upload-photos" target="_blank">Subir Fotos</a>
                 <!-- ================= RSVP SECTION ================= -->
-          <section id="rsvpSection">
-            <h3>Confirmar Asistencia</h3>
+ <!-- ================= RSVP SECTION ================= -->
+<section id="rsvpSection">
+  <h3>Confirmar Asistencia</h3>
 
-            <lord-icon
-              src="https://cdn.lordicon.com/unkasvor.json"
-              trigger="loop"
-              delay="2000"
-              stroke="light"
-              colors="primary:#DB7093,secondary:#C71585"
-              style="width:200px;height:200px">
-            </lord-icon>
+  <lord-icon
+    src="https://cdn.lordicon.com/unkasvor.json"
+    trigger="loop"
+    delay="2000"
+    stroke="light"
+    colors="primary:#DB7093,secondary:#C71585"
+    style="width:200px;height:200px">
+  </lord-icon>
 
-            <p>
-              Para nosotros es muy importante que confirmes tu asistencia lo antes posible,
-              o bien indicarnos si no podrás acompañarnos.
-            </p>
+  <p>
+    Para nosotros es muy importante que confirmes tu asistencia lo antes posible,
+    o bien indicarnos si no podrás acompañarnos.
+  </p>
 
-            <button id="btnConfirmarRsvp" type="button">
-              Confirmar
-            </button>
+  <button id="btnConfirmarRsvp" type="button">
+    Confirmar
+  </button>
 
-            <div id="msgRsvp" class="rsvp-msg" style="display:none"></div>
-          </section>
+  <div id="msgRsvp" class="rsvp-msg" style="display:none"></div>
+</section>
 
-          <!-- ================= RSVP MODAL ================= -->
-          <div id="rsvpBackdrop" class="rsvp-backdrop" aria-hidden="true" style="display:none">
-            <div class="rsvp-modal" role="dialog" aria-modal="true">
-              <button class="rsvp-close" id="btnRsvpClose" type="button">×</button>
+<!-- ================= RSVP MODAL ================= -->
+<div id="rsvpBackdrop" class="rsvp-backdrop" aria-hidden="true" style="display:none">
+  <div class="rsvp-modal" role="dialog" aria-modal="true">
+    <button class="rsvp-close" id="btnRsvpClose" type="button">×</button>
 
-              <h3>Confirmación de asistencia</h3>
-              <p class="rsvp-sub">Por favor selecciona una opción</p>
+    <h3>Confirmación de asistencia</h3>
+    <p class="rsvp-sub">Por favor selecciona una opción</p>
 
-              <label>Nombre</label>
-              <input id="rsvpNombre" type="text" readonly>
+    <label>Nombre</label>
+    <input id="rsvpNombre" type="text" readonly>
 
-              <label>Cantidad de pases</label>
-              <input id="rsvpPases" type="text" readonly>
+    <label>Cantidad de pases</label>
+    <input id="rsvpPases" type="text" readonly>
 
-              <div class="rsvp-actions">
-                <button id="btnRsvpSi" class="rsvp-btn rsvp-yes">Sí, asistiré</button>
-                <button id="btnRsvpNo" class="rsvp-btn rsvp-no">No, asistiré</button>
-              </div>
+    <label>No. de mesa para adultos</label>
+    <input id="rsvpMesaAdultos" type="text" readonly>
 
-              <div id="rsvpMsgModal" class="rsvp-msg" style="display:none"></div>
-            </div>
-          </div>
+    <label>No. de mesa para adolescentes</label>
+    <input id="rsvpMesaAdolescentes" type="text" readonly>
+
+    <div class="rsvp-actions">
+      <button id="btnRsvpSi" class="rsvp-btn rsvp-yes">Sí, asistiré</button>
+      <button id="btnRsvpNo" class="rsvp-btn rsvp-no">No, asistiré</button>
+    </div>
+
+    <div id="rsvpMsgModal" class="rsvp-msg" style="display:none"></div>
+  </div>
+</div>
 
           <section class="separador-xv">
             <img src="images/V1.jpeg" alt="Decoración XV">

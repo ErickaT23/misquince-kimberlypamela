@@ -1,6 +1,6 @@
 /**************** RSVP CONFIG ****************/
 const RSVP_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbwCy-cIhlFAKoH4EYSijSwqJpTClitROFQ_vYR3Hn99Y_nOByYqUU9zpToi5UJFs6m0/exec";
+  "https://script.google.com/macros/s/AKfycbzLeNOqdUdwwNq_5IlFkcrdyMY-9pfUm0JiqqSrSweicym2FCgJQRgQy-Jyb35GZaw/exec";
 
 const $ = (s) => document.querySelector(s);
 
@@ -18,10 +18,47 @@ function hideMsg(el) {
   el.textContent = "";
 }
 
+function formatGuestPasses(adults, teens) {
+  const parts = [];
+
+  if (adults > 0) {
+    parts.push(`${adults} ${adults === 1 ? "adulto" : "adultos"}`);
+  }
+
+  if (teens > 0) {
+    parts.push(`${teens} ${teens === 1 ? "adolescente" : "adolescentes"}`);
+  }
+
+  return parts.length ? parts.join(" + ") : "Sin pases";
+}
+
+function getMesaMessage(adults, teens, tableAdults, tableTeens) {
+
+  // Solo adultos
+  if (adults > 0 && teens === 0) {
+    return `Gracias, ya has enviado tu confirmación.
+Recuerda que tu mesa asignada es la "${tableAdults}".`;
+  }
+
+  // Adultos + adolescentes
+  if (adults > 0 && teens > 0) {
+    return `Gracias, ya has enviado tu confirmación.
+Recuerda que tu mesa para adultos es la "${tableAdults}" y que la de adolescentes es "${tableTeens}".`;
+  }
+
+  // Solo adolescentes
+  if (adults === 0 && teens > 0) {
+    return `Gracias, ya has enviado tu confirmación.
+Recuerda que tu mesa asignada es la "${tableTeens}" de adolescentes.`;
+  }
+
+  return "Gracias, ya has enviado tu confirmación.";
+}
+
 /**************** UI: CONFIRMADO ****************/
-function markConfirmedUI() {
+function markConfirmedUI(message = "Gracias, ya has enviado tu confirmación.") {
   const btn = $("#btnConfirmarRsvp");
-  const msg = $("#msgRsvp"); // mensaje debajo del botón (en la sección)
+  const msg = $("#msgRsvp");
 
   if (btn) {
     btn.textContent = "Confirmación enviada ✓";
@@ -32,7 +69,7 @@ function markConfirmedUI() {
   if (msg) {
     msg.style.display = "block";
     msg.className = "rsvp-msg ok";
-    msg.textContent = "Gracias, ya has enviado tu confirmación.";
+    msg.innerHTML = message.replace(/\n/g, "<br>");
   }
 }
 
@@ -58,10 +95,9 @@ function openRsvpModal() {
   if (!b) return;
 
   b.style.display = "flex";
-  b.setAttribute("aria-hidden", "false"); // ✅ evita warning
+  b.setAttribute("aria-hidden", "false");
   setTimeout(() => b.classList.add("show"), 0);
 
-  // foco inicial
   const firstFocusable = $("#btnRsvpSi") || $("#btnRsvpClose");
   if (firstFocusable) setTimeout(() => firstFocusable.focus(), 50);
 }
@@ -73,9 +109,8 @@ function closeRsvpModal() {
   b.classList.remove("show");
   setTimeout(() => {
     b.style.display = "none";
-    b.setAttribute("aria-hidden", "true"); // ✅ evita warning
+    b.setAttribute("aria-hidden", "true");
 
-    // devolver foco al botón principal
     const opener = $("#btnConfirmarRsvp");
     if (opener) opener.focus();
   }, 250);
@@ -115,7 +150,7 @@ async function apiSend(data) {
   }
 }
 
-/**************** LOCAL CONFIRM (anti doble) ****************/
+/**************** LOCAL CONFIRM ****************/
 function storageKey(id) {
   return `rsvp_confirmed_${id}`;
 }
@@ -128,27 +163,29 @@ function isConfirmed(id) {
   return !!localStorage.getItem(storageKey(id));
 }
 
-/**************** GUEST desde URL + DOM ****************/
-function getGuestFromURL() {
+/**************** GUEST ****************/
+function getGuestData() {
+  if (window.currentGuest && window.currentGuest.id) {
+    return window.currentGuest;
+  }
+
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
   if (!id) return null;
 
-  const nameEl = document.getElementById("guest-name");
-  const passesEl = document.getElementById("passes");
-
-  const nombre = (nameEl?.textContent || "Invitado")
-    .replace(/^¡/, "")
-    .replace(/,?\s*(están invitados|estás invitado)!?$/i, "")
-    .trim() || "Invitado";
-
-  const pases = Number.parseInt(passesEl?.textContent || "1", 10);
-  return { id, nombre, pases: Number.isFinite(pases) ? pases : 1 };
+  return {
+    id,
+    name: "Invitado",
+    adults: 0,
+    teens: 0,
+    tableAdults: "",
+    tableTeens: ""
+  };
 }
 
 /**************** INIT ****************/
 document.addEventListener("DOMContentLoaded", () => {
-  const invitado = getGuestFromURL();
+  const invitado = getGuestData();
 
   const btnOpen = $("#btnConfirmarRsvp");
   const btnClose = $("#btnRsvpClose");
@@ -157,26 +194,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const inputNombre = $("#rsvpNombre");
   const inputPases = $("#rsvpPases");
+  const inputMesaAdultos = $("#rsvpMesaAdultos");
+  const inputMesaAdolescentes = $("#rsvpMesaAdolescentes");
   const msgModal = $("#rsvpMsgModal");
 
-  // Si falta algo clave, no rompemos
-  if (!btnOpen || !btnSi || !btnNo || !inputNombre || !inputPases) return;
+  if (!btnOpen || !btnSi || !btnNo || !inputNombre || !inputPases || !inputMesaAdultos || !inputMesaAdolescentes) return;
 
   hideMsg(msgModal);
 
-  // Si no hay invitado, dejamos botón activo, pero al abrir avisamos
   if (invitado) {
-    inputNombre.value = invitado.nombre;
-    inputPases.value = invitado.pases;
+    inputNombre.value = invitado.name || "Invitado";
+    inputPases.value = formatGuestPasses(invitado.adults || 0, invitado.teens || 0);
+    inputMesaAdultos.value = invitado.tableAdults || "No asignada";
+    inputMesaAdolescentes.value = invitado.tableTeens || "No asignada";
 
-    // ✅ Estado inicial: si ya confirmó localmente, pintamos UI como la otra invitación
     if (isConfirmed(invitado.id)) {
       markConfirmedUI();
     } else {
       resetConfirmUI();
     }
 
-    // ✅ Verificación backend “silenciosa” para pintar UI aunque cambie de dispositivo
     (async () => {
       try {
         const ya = await apiCheck(invitado.id);
@@ -185,7 +222,6 @@ document.addEventListener("DOMContentLoaded", () => {
           markConfirmedUI();
         }
       } catch (e) {
-        // no molestamos al usuario si falla el check
         console.warn("apiCheck inicial falló:", e);
       }
     })();
@@ -204,7 +240,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ✅ bloqueo inmediato por localStorage
     if (isConfirmed(invitado.id)) {
       showMsg(msgModal, "Gracias, ya has enviado tu confirmación.", "ok");
       markConfirmedUI();
@@ -212,7 +247,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    // ✅ verificación backend (por si confirmó en otro teléfono)
     try {
       const ya = await apiCheck(invitado.id);
       if (ya) {
@@ -233,7 +267,6 @@ document.addEventListener("DOMContentLoaded", () => {
   async function confirmar(respuesta) {
     if (!invitado) return;
 
-    // si ya confirmó, no permitir doble
     if (isConfirmed(invitado.id)) {
       showMsg(msgModal, "Gracias, ya has enviado tu confirmación.", "ok");
       markConfirmedUI();
@@ -241,20 +274,29 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    const msgSi = "Gracias por confirmar tu asistencia y hacer este día aún más especial.";
+    const msgSi = getMesaMessage(invitado.adults || 0,invitado.teens || 0,invitado.tableAdults || "",invitado.tableTeens || "");
     const msgNo = "Lamentamos que no puedas acompañarnos en esta ocasión y agradecemos tu respuesta.";
 
     try {
       const res = await apiSend({
         guestId: invitado.id,
-        nombre: invitado.nombre,
-        pases: String(invitado.pases),
+        nombre: invitado.name,
+        adults: String(invitado.adults || 0),
+        teens: String(invitado.teens || 0),
+        pasesDetalle: formatGuestPasses(invitado.adults || 0, invitado.teens || 0),
+        mesaAdultos: invitado.tableAdults || "",
+        mesaAdolescentes: invitado.tableTeens || "",
         respuesta,
       });
 
       if (res && (res.ok === true || res.success === true)) {
         setConfirmed(invitado.id, respuesta);
-        markConfirmedUI();
+        if (respuesta === "SI") {
+          markConfirmedUI(msgSi);
+        } else {
+          markConfirmedUI(msgNo);
+        }
+        
         showMsg(msgModal, respuesta === "SI" ? msgSi : msgNo, "ok");
         setTimeout(closeRsvpModal, 900);
       } else {
