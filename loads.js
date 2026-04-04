@@ -74,7 +74,8 @@ const guests = [
   { id: "73", name: "Jean Pérez", adults: 1, teens: 0, tableAdults: "3", tableTeens: "" },
   { id: "74", name: "Sr y Sra. Franco Hernádez", adults: 2, teens: 0, tableAdults: "8", tableTeens: "" },
   { id: "75", name: "Sr.Angel y familia pte.", adults: 4, teens: 0, tableAdults: "", tableTeens: "" },
-  { id: "76", name: "Sra. Leydi Melgar", adults: 2, teens: 0, tableAdults: "", tableTeens: "" }
+  { id: "76", name: "Sra. Leydi Melgar", adults: 2, teens: 0, tableAdults: "", tableTeens: "" },
+  { id: "77", name: "Julian y Aury", adults: 2, teens: 0, tableAdults: "2", tableTeens: "" }
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
